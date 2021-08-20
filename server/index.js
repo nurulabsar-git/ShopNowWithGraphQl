@@ -8,6 +8,7 @@ const typeDefs = gql`
   }
  
    type Animals {
+     id: ID!
     image: String!
      title: String!
      price: String!
@@ -20,7 +21,8 @@ const typeDefs = gql`
 
   type Query {
     mainCard: [MainCard]
-    animal: [Animals!]!
+    animals: [Animals!]!
+    animal(slug: String!): Animals
   }
 `;
 
@@ -28,7 +30,17 @@ const typeDefs = gql`
   const resolvers = {
     Query: {
       mainCard: () => mainCards, // this object name (mainCard) is most important, It must similar to the query name. that means first time compiler read data type for certain entity and then find it from resolver!
-      animal: () => animals,
+      animals: () => animals,
+      animal:(parent, args, ctx) => {
+        let animalToBeFound = animals.find((animal) => {
+          // console.log(args)
+         return  animal.slug == args.slug
+        
+        }) 
+        console.log("SlugTest:", args)
+        return animalToBeFound
+        
+      }
 
     },
   };
