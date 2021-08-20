@@ -1,62 +1,35 @@
 const {ApolloServer, gql } = require('apollo-server');
+const {mainCards, animals } = require('./db');
 
 const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
-    number: Int
-  }
   type MainCard {
     title: String!
     image: String!
   }
  
+   type Animals {
+    image: String!
+     title: String!
+     price: String!
+     description: [String!]!
+     stock: Int!
+     onSale: Boolean
+     slug: String!
+     category: String!
+ } 
+
   type Query {
-    books: [Book]
-    mainCards: [MainCard]
+    mainCard: [MainCard]
+    animal: [Animals!]!
   }
 `;
 
-
-
-const books = [
-    {
-      title: 'The Awakening',
-      author: 'Kate Chopin',
-      number: 1862787070,
-    },
-    {
-      title: 'City of Glass',
-      author: 'Paul Auster',
-      number: 1862784835,
-    },
-  ];
-
-
- const mainCards = [
-   {
-     title: " ",
-     image: ""
-   },
-   {
-    title: " ",
-    image: ""
-  },
-  {
-    title: " ",
-    image: ""
-  },
-  {
-    title: " ",
-    image: ""
-  }
-
- ];
-
+ 
   const resolvers = {
     Query: {
-      books: () => books,
-      mainCards: () => mainCards
+      mainCard: () => mainCards, // this object name (mainCard) is most important, It must similar to the query name. that means first time compiler read data type for certain entity and then find it from resolver!
+      animal: () => animals,
+
     },
   };
 
