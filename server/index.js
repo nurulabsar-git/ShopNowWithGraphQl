@@ -32,9 +32,9 @@ const typeDefs = gql`
       mainCard: () => mainCards, // this object name (mainCard) is most important, It must similar to the query name. that means first time compiler read data type for certain entity and then find it from resolver!
       animals: () => animals,
       animal:(parent, args, ctx) => {
-        let animalToBeFound = animals.find((animal) => {
+        let animalToBeFound = animals.find((datum) => {
           // console.log(args)
-         return  animal.slugg === args.slug
+         return  datum.slug === args.slugg
         
         }) 
         console.log("SlugTest:", args)
