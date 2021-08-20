@@ -1,2 +1,3 @@
 ##### ShopNowWithGraphQl
-<img src="../images/download.png" alt="img" />
+
+<img src="./images/download.png" alt=""/>
