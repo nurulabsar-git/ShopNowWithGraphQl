@@ -22,7 +22,7 @@ const typeDefs = gql`
   type Query {
     mainCard: [MainCard]
     animals: [Animals!]!
-    animal(slug: String!): Animals
+    animal(slugg: String!): Animals
   }
 `;
 
@@ -34,7 +34,7 @@ const typeDefs = gql`
       animal:(parent, args, ctx) => {
         let animalToBeFound = animals.find((animal) => {
           // console.log(args)
-         return  animal.slug == args.slug
+         return  animal.slugg === args.slug
         
         }) 
         console.log("SlugTest:", args)
