@@ -152,6 +152,34 @@ const mainCards = [
 
   ]
 
+  const categories = [
+    {
+        id: "1",
+        image: "tiger",
+        category: "cats",
+        slug: "cats"
+    },
+    {
+      id: "2",
+      image: "snake",
+      category: "reptiles",
+      slug: "reptiles"
+    },
+    {
+      id: "3",
+      image: "stingray",
+      category: "ocean creatures",
+      slug: "ocean-creatures"
+    },
+    {
+      id: "4",
+      image: "donkey",
+      category: "mammals",
+      slug: "mammals"
+    }
+]
+
+
 
 
 
@@ -159,5 +187,6 @@ const mainCards = [
 module.exports = {
   mainCards,
   animals,
+  categories
 
 }
