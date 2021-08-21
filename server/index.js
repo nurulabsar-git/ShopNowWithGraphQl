@@ -42,6 +42,7 @@ const typeDefs = gql`
 
  
   const resolvers = {
+    /* start query resolver */
     Query: {
       mainCard: () => mainCards, // this object name (mainCard) is most important, It must similar to the query name {mainCard  (↑ top)}. that means first time compiler, read data type for certain entity and then find it from resolver!
       animals: () => animals,
@@ -58,13 +59,31 @@ const typeDefs = gql`
             let category = categories.find((datum) => {
               return datum.slug === args.slug
               })
-              console.log("categorySlug:", args)
+              // console.log("categorySlug:", args)
               return category
           }
 
+    },
+    /* end query resolver */
+    /* start category resolver */
+    
+      Category: {
+       animals: (parent, args, ctx) => {
+        return animals.filter(datum=> {
+          console.log("animalFilter: ",  datum)
+          return datum.category === parent.id
+        })
+
+        console.log(parent) 
+
+       }
+    }
 
 
-    }};
+
+    /*End query resolver */
+
+};
 
 
   const server = new ApolloServer({ typeDefs, resolvers });
