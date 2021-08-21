@@ -5,7 +5,6 @@ const typeDefs = gql`
     title: String!
     image: String!
   }
- 
    type Animal {
      id: ID!
      image: String!
@@ -16,9 +15,7 @@ const typeDefs = gql`
      onSale: Boolean
      slug: String!
      category: Category
-    
  } 
-
    type Category{
      id: ID!
      image: String!
@@ -27,9 +24,6 @@ const typeDefs = gql`
      animals: [Animal!]!
     
    }
-
-
-
   type Query {
     mainCard: [MainCard]
     animals: [Animal!]!

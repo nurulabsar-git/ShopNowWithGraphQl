@@ -1,3 +1,4 @@
+const {animals} = require('../db');
 const Category = {
     animals: (parent, args, ctx) => {
      return animals.filter(datum=> {

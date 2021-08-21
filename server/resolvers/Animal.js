@@ -1,3 +1,4 @@
+const {categories} = require('../db');
 const Animal = {
     category: (parent, args, ctx) => {
       console.log(parent)

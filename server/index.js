@@ -1,5 +1,5 @@
 const {ApolloServer, gql } = require('apollo-server');
-const {mainCards, animals, categories} = require('./db');
+
 const {mainCards, animals, categories} = require('./db');
 const typeDefs = require('./schema');
 const Query = require('./resolvers/Query');
@@ -94,9 +94,18 @@ const Animal = require('./resolvers/Animal');
 //       // End Animal resolver
 
 // };
+// const server = new ApolloServer({ typeDefs, resolvers });
 
-
-  const server = new ApolloServer({ typeDefs, resolvers });
+  const server = new ApolloServer({
+    typeDefs, 
+    resolvers: {
+      Query,
+      Animal,
+      Category
+    }
+  
+  
+  });
   server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });

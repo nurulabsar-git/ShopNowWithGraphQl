@@ -1,3 +1,4 @@
+const {mainCards, animals, categories} = require('../db');
 const Query = {
     mainCard: () => mainCards, // this object name (mainCard) is most important, It must similar to the query name {mainCard  (↑ top)}. that means first time compiler, read data type for certain entity and then find it from resolver!
     animals: () => animals,
