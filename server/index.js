@@ -73,15 +73,20 @@ const typeDefs = gql`
           console.log("animalFilter: ",  datum)
           return datum.category === parent.id
         })
-
-        console.log(parent) 
-
-       }
-    }
-
-
-
+     // console.log(parent) 
+     }},
     /*End query resolver */
+    
+    // Start Animal resolver
+     Animal: {
+     category: (parent, args, ctx) => {
+       console.log(parent)
+      return categories.find(datum => {
+        return datum.id === parent.category
+      })
+    }
+  },
+      // End Animal resolver
 
 };
 
