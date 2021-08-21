@@ -7,16 +7,17 @@ const typeDefs = gql`
     image: String!
   }
  
-   type Animals {
+   type Animal {
      id: ID!
-    image: String!
+     image: String!
      title: String!
      price: String!
      description: [String!]!
      stock: Int!
      onSale: Boolean
      slug: String!
-     category: String!
+     category: Category
+    
  } 
 
    type Category{
@@ -24,16 +25,18 @@ const typeDefs = gql`
      image: String!
      category: String!
      slug: String!
+     animals: [Animal!]!
+    
    }
 
 
 
   type Query {
     mainCard: [MainCard]
-    animals: [Animals!]!
-    animal(eachSlug: String!): Animals
+    animals: [Animal!]!
+    animal(slug: String!): Animal
     categories: [Category!]!
-    category(eachSlug: String!): Category
+    category(slug: String!): Category
   }
 `;
 
@@ -43,23 +46,21 @@ const typeDefs = gql`
       mainCard: () => mainCards, // this object name (mainCard) is most important, It must similar to the query name {mainCard  (↑ top)}. that means first time compiler, read data type for certain entity and then find it from resolver!
       animals: () => animals,
       animal:(parent, args, ctx) => {
-        let animalToBeFound = animals.find((datum) => {
-          // console.log(args)
-         return  datum.slug === args.eachSlug
-        
-        }) 
-        // console.log("SlugTest:", args)
-        return animalToBeFound
-      },
-       categories: () => categories,
-       
-       category: (parent, args, ctx) => {
-           let certainCategory = categories.find((datum) => {
-              return datum.slug === args.eachSlug
-           })
-           console.log("categorySlug:", args)
-          return certainCategory
-       }
+            let animal = animals.find((datum) => { // THIS animals come from db.js
+            return  datum.slug === args.slug
+            }) 
+            // console.log("SlugTest:", args)
+            return animal
+            },
+      categories: () => categories,
+
+      category: (parent, args, ctx) => {
+            let category = categories.find((datum) => {
+              return datum.slug === args.slug
+              })
+              console.log("categorySlug:", args)
+              return category
+          }
 
 
 

@@ -35,7 +35,8 @@ const mainCards = [
       stock: 14,
       onSale: false,
       slug: "lion",
-      category: "1"
+      category: "1",
+     
   },
   {
       id: "2",
@@ -157,7 +158,26 @@ const mainCards = [
         id: "1",
         image: "tiger",
         category: "cats",
-        slug: "cats"
+        slug: "cats",
+        animals: [
+          {
+            id: "8",
+            image: "donkey",
+            title: "This is the Voice Actor from the Dockey for Shrek.",
+            price: "179,731",
+            description: [
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            ],
+            stock: 14,
+            onSale: false,
+            slug: "donkey",
+            category: "4"
+        }
+          
+    ]
     },
     {
       id: "2",
@@ -176,7 +196,7 @@ const mainCards = [
       image: "donkey",
       category: "mammals",
       slug: "mammals"
-    }
+    } 
 ]
 
 
