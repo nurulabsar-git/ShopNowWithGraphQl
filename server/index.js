@@ -1,11 +1,10 @@
 const {ApolloServer, gql } = require('apollo-server');
-
 const {mainCards, animals, categories} = require('./db');
 const typeDefs = require('./schema');
 const Query = require('./resolvers/Query');
 const Category = require('./resolvers/Category');
 const Animal = require('./resolvers/Animal');
-
+const Mutation = require('./resolvers/Mutation');
 // const typeDefs = gql`
 //   type MainCard {
 //     title: String!
@@ -101,7 +100,8 @@ const Animal = require('./resolvers/Animal');
     resolvers: {
       Query,
       Animal,
-      Category
+      Category,
+      Mutation,
     },
 
     context: {
