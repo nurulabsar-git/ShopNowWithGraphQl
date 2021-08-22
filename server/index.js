@@ -102,6 +102,14 @@ const Animal = require('./resolvers/Animal');
       Query,
       Animal,
       Category
+    },
+
+    context: {
+    mainCards,
+    animals,
+    categories,
+    // message: "Hello context"
+
     }
   
   
