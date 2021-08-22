@@ -8,6 +8,14 @@ const Mutation = {
     // console.log(newAnimal)
     animals.push(newAnimal)
     return newAnimal
+    },
+    removeAnimal: (parent, {id}, {animals}) => {
+       let index = animals.findIndex((animal) => {
+          return animal.id === id
+       })
+
+       animals.splice(index, 1);
+       return true
     }
 
 }
